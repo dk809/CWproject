@@ -142,7 +142,7 @@ let app = new Vue({
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
-          alert(`Order for ${this.checkoutName} has been submitted.`);
+          alert(`Order completed for ${name.value}.`);
         })
         .catch((error) => console.error(error));
 
