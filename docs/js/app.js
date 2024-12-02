@@ -151,7 +151,7 @@ let app = new Vue({
       this.checkoutName = '';
       this.checkoutPhone = '';
       this.showCart = false;
-      alert(`Order for ${name.value}} has been submitted.`);
+      alert(`Order for ${name.value} has been submitted.`);
     },
     searchLessons() {
       fetch(`https://cw-backend-zg9d.onrender.com/search?search_term=${this.searchQuery}`, { method: 'GET' })

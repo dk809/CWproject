@@ -40,7 +40,8 @@
     </div>
 
     <div class="controls">
-      <input type="text" @input="searchLessons" v-model.trim="searchQuery" placeholder="Search lessons..." class="search-bar" />
+      <input type="text" @input="searchLessons" v-model.trim="searchQuery" placeholder="Search lessons..."
+        class="search-bar" />
 
     </div>
 
@@ -50,7 +51,7 @@
         <i :class="lesson.icon"></i>
         <div>
           <h2>{{ lesson.name }}</h2>
-          <p>Location: {{ lesson.address }}</p>
+          <p>Location: {{ lesson.location }}</p>
           <p>Price: ${{ lesson.price }}</p>
           <p>Spaces: {{ lesson.spaces }}</p>
           <p>Subject: {{ lesson.subject }}</p>
