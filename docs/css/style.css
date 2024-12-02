@@ -1,0 +1,191 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+  }
+  #app {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+  h1 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  .lesson-list {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  } 
+  .lesson {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  .lesson:hover{
+    transform: scale(1.1);
+  }
+  .lesson i {
+    font-size: 2em;
+    color: #4a90e2;
+    margin-bottom: 10px;
+  }
+  .lesson h2 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+  }
+  .lesson p {
+    margin: 5px 0;
+    color: #666;
+  }
+
+  .controls, .cart-section, .checkout-section {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .cart-section, .checkout-section {
+    display: none;
+  }
+
+  .active {
+    display: grid;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  .checkout-input {
+    margin: 10px 0;
+  }
+
+  .checkout-section input {
+    padding: 5px;
+    width: 80%;
+  }
+
+  .cart-section {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-section h2 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .cart-item span {
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .cart-item button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .cart-item button:hover {
+    background-color: #357ab8;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #357ab8;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .checkout-section h2 {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-input {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .checkout-input label {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .checkout-input input {
+    padding: 8px;
+    width: calc(100% - 16px);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+
+  .search-bar {
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: block;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
