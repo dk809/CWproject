@@ -142,7 +142,7 @@ let app = new Vue({
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
-          alert(`Order completed for ${name.value}.`);
+          alert(`Order for ${name.value} has been submitted.`);
         })
         .catch((error) => console.error(error));
 
@@ -151,7 +151,7 @@ let app = new Vue({
       this.checkoutName = '';
       this.checkoutPhone = '';
       this.showCart = false;
-      alert(`Order for ${this.checkoutName} has been submitted.`);
+      alert(`Order for ${name.value}} has been submitted.`);
     },
     searchLessons() {
       fetch(`https://cw-backend-zg9d.onrender.com/search?search_term=${this.searchQuery}`, { method: 'GET' })
