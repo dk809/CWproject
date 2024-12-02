@@ -49,6 +49,7 @@
       <!-- looping out list of lessons using vue directive: v-for -->
       <div class="lesson" v-for="lesson in lessons" :key="lesson.subject">
         <i :class="lesson.icon"></i>
+        {{lesson}}
         <div>
           <h2>{{ lesson.name }}</h2>
           <p>Location: {{ lesson.location }}</p>
