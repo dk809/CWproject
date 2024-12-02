@@ -129,7 +129,7 @@ let app = new Vue({
             body: payload,
           };
     
-          fetch("http://localhost:3000/order/", requestOptions)
+          fetch("https://cw-backend-zg9d.onrender.com/order/", requestOptions)
             .then((response) => response.json())
             .then((result) => console.log(result))
             .catch((error) => console.error(error));
@@ -141,14 +141,14 @@ let app = new Vue({
           this.showCart = false;
         },
         searchLessons() {
-          fetch(`/search?search_term=${this.searchQuery}`, { method: 'GET' })
+          fetch(`https://cw-backend-zg9d.onrender.com/search?search_term=${this.searchQuery}`, { method: 'GET' })
             .then((res) => res.json())
             .then((data) => { this.lessons = data })
         }
       },
     
       created() {
-        fetch('http://localhost:3000/collections/lessons')
+        fetch('https://cw-backend-zg9d.onrender.com/collections/lessons')
           .then((res) => res.json())
           .then((d) => {
             console.log('Success', d)
