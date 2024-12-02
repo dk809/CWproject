@@ -33,7 +33,33 @@ let app = new Vue({
           });
         },
     
-        
+        sortedLessons() {
+          // copy lessons array to preserve default order
+          let sortedArray = [...this.lessons];
+    
+    
+          // Sort based on the selected attribute and order
+          if (sortedArray.length > 0) {
+            sortedArray.sort((a, b) => {
+              let valueA = a[this.sortAttribute];
+              let valueB = b[this.sortAttribute];
+              if (typeof valueA === 'string' && typeof valueB === 'string') {
+                valueA = valueA.toLowerCase();
+                valueB = valueB.toLowerCase();
+              }
+    
+              if (this.sortOrder === 'asc') {
+                return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
+              } else {
+                return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
+              }
+            });
+          }
+    
+    
+          this.lessons = sortedArray
+          return sortedArray;
+        },
     
     
         // displayedLessons() {
