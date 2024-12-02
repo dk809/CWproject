@@ -136,15 +136,17 @@ let app = new Vue({
         method: "POST",
         headers: myHeaders,
         body: payload,
-        // redirect: "follow"
       };
 
       fetch("https://cw-backend-zg9d.onrender.com/order/", requestOptions)
         .then((response) => response.json())
-        .then((result) => console.log(result))
+        .then((result) => {
+          console.log(result);
+          alert(`Order for ${this.checkoutName} has been submitted.`);
+        })
         .catch((error) => console.error(error));
-      
-        
+
+
       this.cart = [];
       this.checkoutName = '';
       this.checkoutPhone = '';
