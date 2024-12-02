@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
   <div id="app">
     <!-- dont forget to comment before push -->
@@ -21,14 +23,14 @@
     <div class="controls">
       <div>
         <label for="sortAttribute">Sort by:</label>
-        <select v-model="sortAttribute">
+        <select @select="sortedLessons" v-model="sortAttribute">
           <option value="subject">Subject</option>
           <option value="location">Location</option>
           <option value="price">Price</option>
           <option value="spaces">Spaces</option>
         </select>
       </div>
-      
+
       <div>
         <label for="sortOrder">Order:</label>
         <button @click="toggleSortOrder">
@@ -38,28 +40,22 @@
     </div>
 
     <div class="controls">
-      <input 
-        type="text" 
-        v-model="searchQuery" 
-        placeholder="Search lessons..." 
-        class="search-bar"
-      />
+      <input type="text" @input="searchLessons" v-model.trim="searchQuery" placeholder="Search lessons..." class="search-bar" />
+
     </div>
-    
-    
+
     <div class="lesson-list" :class="{ active: !showCart }">
       <!-- looping out list of lessons using vue directive: v-for -->
-      <div class="lesson" v-for="lesson in displayedLessons" :key="lesson.subject">
+      <div class="lesson" v-for="lesson in lessons" :key="lesson.subject">
         <i :class="lesson.icon"></i>
         <div>
           <h2>{{ lesson.name }}</h2>
           <p>Location: {{ lesson.address }}</p>
-          <!-- <p>Price: ${{ lesson.price }}</p> -->
-          <!-- <p>Spaces: {{ lesson.spaces }}</p> -->
+          <p>Price: ${{ lesson.price }}</p>
+          <p>Spaces: {{ lesson.spaces }}</p>
+          <p>Subject: {{ lesson.subject }}</p>
 
-          <button 
-            @click="addToCart(lesson)" 
-            :disabled="lesson.spaces === 0">
+          <button @click="addToCart(lesson)" :disabled="lesson.spaces === 0">
             Add to Cart
           </button>
         </div>
@@ -73,8 +69,8 @@
         <span>{{ item.subject }} ({{ item.quantity }})</span>
         <button @click="removeFromCart(item)">Remove</button>
       </div>
-      
-        <!-- Checkout section -->
+
+      <!-- Checkout section -->
       <div v-if="showCart && cart.length > 0" class="checkout-section active">
         <h2>Checkout</h2>
         <div class="checkout-input">
@@ -85,19 +81,12 @@
           <label>Phone:</label>
           <input v-model="checkoutPhone" @input="validatePhone" type="text" placeholder="Your Phone Number" />
         </div>
-        <div class="checkout-input">
-          <label>Email:</label>
-          <input v-model="checkoutEmail" @input="validateEmail" type="email" placeholder="Your Email" />
-        </div>
-        <div class="checkout-input">
-          <label>Address:</label>
-          <input v-model="checkoutAddress" type="text" placeholder="Your Address" />
-        </div>
         <button :disabled="!isCheckoutEnabled" @click="checkout">Checkout</button>
       </div>
     </div>
   </div>
-  
+
   <script src="js/app.js"></script>
 </body>
+
 </html>
