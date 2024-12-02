@@ -143,15 +143,13 @@ let app = new Vue({
         .then((response) => response.json())
         .then((result) => console.log(result))
         .catch((error) => console.error(error));
-      // fetch(`/order123/`, { method: 'POST', body: payload })
-      //   .then((res) => res.json())
-      //   .then((data) => data)
-
+      
+        
       this.cart = [];
       this.checkoutName = '';
       this.checkoutPhone = '';
       this.showCart = false;
-      // alert(`Order for ${this.checkoutName} has been submitted.`);
+      alert(`Order for ${this.checkoutName} has been submitted.`);
     },
     searchLessons() {
       fetch(`https://cw-backend-zg9d.onrender.com/search?search_term=${this.searchQuery}`, { method: 'GET' })
