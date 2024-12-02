@@ -154,7 +154,7 @@ let app = new Vue({
       // alert(`Order for ${this.checkoutName} has been submitted.`);
     },
     searchLessons() {
-      fetch(`/search?search_term=${this.searchQuery}`, { method: 'GET' })
+      fetch(`https://cw-backend-zg9d.onrender.com/search?search_term=${this.searchQuery}`, { method: 'GET' })
         .then((res) => res.json())
         .then((data) => { this.lessons = data })
     }
