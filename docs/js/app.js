@@ -9,17 +9,17 @@ let app = new Vue({
       checkoutPhone: '',
       checkoutEmail: '',
       checkoutAddress: '',
-      sortAttribute: 'subject',  // default sort attribute
-      sortOrder: 'asc', // default order
+      sortAttribute: 'subject',
+      sortOrder: 'asc', 
       searchQuery: '',
     },
 
     computed: {
 
         filteredLessons() {
-          const query = this.searchQuery.toLowerCase(); // Convert query to lowercase
+          const query = this.searchQuery.toLowerCase(); 
           this.lessons = this.lessons.filter(lesson => {
-            const subject = lesson.subject?.toLowerCase() || ''; // Safely access or default to an empty string
+            const subject = lesson.subject?.toLowerCase() || ''; 
             const location = lesson.location?.toLowerCase() || '';
             const price = lesson.price?.toString() || '';
             const spaces = lesson.spaces?.toString() || '';
