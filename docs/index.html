@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Booking System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- dont forget to comment before push -->
+    <h1>Lesson Booking System</h1>
+
+    <!-- Shopping cart toggle button -->
+    <button @click="toggleCart" :disabled="cart.length === 0">
+      {{ showCart ? 'Back to Lessons' : 'View Cart' }}
+    </button>
+
+    <div class="controls">
+      <div>
+        <label for="sortAttribute">Sort by:</label>
+        <select @select="sortedLessons" v-model="sortAttribute">
+          <option value="subject">Subject</option>
+          <option value="location">Location</option>
+          <option value="price">Price</option>
+          <option value="spaces">Spaces</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="sortOrder">Order:</label>
+        <button @click="toggleSortOrder">
+          {{ sortOrder === 'asc' ? 'Ascending' : 'Descending' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input type="text" @input="searchLessons" v-model.trim="searchQuery" placeholder="Search lessons..." class="search-bar" />
+      <button @click="debugFilteredLessons">Debug Filtered Lessons</button>
+
+    </div>
+
+    <div class="lesson-list" :class="{ active: !showCart }">
+      <!-- looping out list of lessons using vue directive: v-for -->
+      <div class="lesson" v-for="lesson in lessons" :key="lesson.subject">
+        <i :class="lesson.icon"></i>
+        <div>
+          <h2>{{ lesson.name }}</h2>
+          <p>Location: {{ lesson.address }}</p>
+          <p>Price: ${{ lesson.price }}</p>
+          <p>Spaces: {{ lesson.spaces }}</p>
+          <p>Subject: {{ lesson.subject }}</p>
+
+          <button @click="addToCart(lesson)" :disabled="lesson.spaces === 0">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart section -->
+    <div class="cart-section" :class="{ active: showCart }">
+      <h2>Shopping Cart</h2>
+      <div v-for="item in cart" :key="item.subject" class="cart-item">
+        <span>{{ item.subject }} ({{ item.quantity }})</span>
+        <button @click="removeFromCart(item)">Remove</button>
+      </div>
+
+      <!-- Checkout section -->
+      <div v-if="showCart && cart.length > 0" class="checkout-section active">
+        <h2>Checkout</h2>
+        <div class="checkout-input">
+          <label>Name:</label>
+          <input v-model="checkoutName" @input="validateName" type="text" placeholder="Your Name" />
+        </div>
+        <div class="checkout-input">
+          <label>Phone:</label>
+          <input v-model="checkoutPhone" @input="validatePhone" type="text" placeholder="Your Phone Number" />
+        </div>
+        <button :disabled="!isCheckoutEnabled" @click="checkout">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
